@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meet Andrew · Andrew Evans</title>
+  <meta name="description" content="Andrew Evans outside of work: a quick bio, milestones and photos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="wrap nav">
+      <a class="brand" href="../">Andrew Evans</a>
+      <ul>
+        <li><a href="#bio">Bio</a></li>
+        <li><a href="#milestones">Milestones</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="../">← Portfolio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="bio" class="wrap about-hero">
+      <div class="portrait todo" aria-label="Portrait photo">
+        <!-- Replace with: <img src="../images/about/portrait.jpg" alt="Andrew smiling outdoors"> -->
+        <span>Add a portrait photo</span>
+      </div>
+      <div>
+        <p class="eyebrow">Meet Andrew</p>
+        <h1>The person behind the product work.</h1>
+        <p class="lede todo-text">[Add a short bio: two or three sentences in your own voice about who you are outside of work: where you're from, what you love doing, who you spend your time with.]</p>
+        <p class="todo-text">[Optional second paragraph: what you're into right now, something people are surprised to learn about you, or what a perfect Saturday in Columbia looks like.]</p>
+        <ul class="facts-chips">
+          <li>📍 Columbia, MO</li>
+          <li>🐯 Mizzou, B.S. Information Technology</li>
+          <li class="todo-text">[Hobby]</li>
+          <li class="todo-text">[Hobby]</li>
+          <li class="todo-text">[Fun fact]</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="milestones" class="wrap section">
+      <h2>Milestones</h2>
+      <p class="muted">The moments that got me here, at work and away from it.</p>
+      <ol class="timeline">
+        <li>
+          <span class="when">2017</span>
+          <div><h3>Started at the University of Missouri</h3><p>Began a B.S. in Information Technology in Columbia.</p></div>
+        </li>
+        <li>
+          <span class="when">Aug 2021</span>
+          <div><h3>First job in mortgage</h3><p>Joined Veterans United Home Loans as a closing specialist, managing 70+ loans at a time.</p></div>
+        </li>
+        <li>
+          <span class="when">Dec 2021</span>
+          <div><h3>Graduated from Mizzou</h3><p>Finished my degree while working at Veterans United.</p></div>
+        </li>
+        <li>
+          <span class="when">May 2023</span>
+          <div><h3>Moved into building the system</h3><p>Became a configuration engineer, going from using the loan software to designing and coding it.</p></div>
+        </li>
+        <li>
+          <span class="when">Apr 2026</span>
+          <div><h3>Leading a build team</h3><p>Started running a lean team of one developer plus AI tooling, with daily standups and weekly demos.</p></div>
+        </li>
+        <li>
+          <span class="when">Nov 2026</span>
+          <div><h3>Shipped my first public projects</h3><p>Launched this site and <a href="https://andrew-jake-evans.github.io/como-business-radar/" target="_blank" rel="noopener">CoMo Food Radar</a>.</p></div>
+        </li>
+        <li class="todo">
+          <span class="when">[Year]</span>
+          <div><h3>[Personal milestone]</h3><p>[e.g. a move, a trip, a race, a family moment, a hobby you picked up.]</p></div>
+        </li>
+        <li class="todo">
+          <span class="when">[Year]</span>
+          <div><h3>[Personal milestone]</h3><p>[Add as many as you like, oldest to newest.]</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="gallery" class="wrap section">
+      <h2>Gallery</h2>
+      <p class="muted">A few snapshots.</p>
+      <div class="gallery" id="galleryGrid"></div>
+    </section>
+  </main>
+
+  <dialog id="lightbox" aria-label="Photo viewer">
+    <button class="lb-close" aria-label="Close">×</button>
+    <img id="lbImg" alt="">
+    <p id="lbCap"></p>
+  </dialog>
+
+  <footer class="wrap footer">
+    <p><a href="../">← Back to the portfolio</a> · © 2026 Andrew Evans</p>
+  </footer>
+
+  <script>
+    // Add photos to images/about/ and list them here: file name and a short caption.
+    const PHOTOS = [
+      // { src: "../images/about/hiking.jpg", caption: "Hiking the Katy Trail" },
+    ];
+    const grid = document.getElementById("galleryGrid");
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    grid.innerHTML = PHOTOS.length
+      ? PHOTOS.map((p, i) => `<figure><button data-i="${i}"><img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy"></button><figcaption>${esc(p.caption)}</figcaption></figure>`).join("")
+      : Array.from({ length: 6 }, () => `<figure class="todo"><span>Add a photo</span></figure>`).join("");
+    const lb = document.getElementById("lightbox");
+    grid.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-i]");
+      if (!b) return;
+      const p = PHOTOS[b.dataset.i];
+      document.getElementById("lbImg").src = p.src;
+      document.getElementById("lbImg").alt = p.caption;
+      document.getElementById("lbCap").textContent = p.caption;
+      lb.showModal();
+    });
+    lb.addEventListener("click", (e) => { if (e.target === lb || e.target.closest(".lb-close")) lb.close(); });
+  </script>
+</body>
+</html>

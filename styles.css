@@ -95,3 +95,15 @@ h2 { font-size: 26px; letter-spacing: -.01em; margin: 0 0 20px; }
 .worklist h3 { margin: 0; font-size: 16px; font-weight: 500; }
 .worklist p { margin: 0; color: var(--muted); font-size: 15px; }
 .card .link + .link { margin-left: 14px; }
+
+/* Meet Andrew callout */
+.meet { padding: 8px 20px 48px; }
+.meet-card {
+  display: block; text-decoration: none; color: var(--text); border-radius: 16px; padding: 28px;
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface)); border: 1px solid var(--border);
+  transition: border-color .15s, transform .15s;
+}
+.meet-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.meet-kicker { display: block; color: var(--accent); font-weight: 600; font-size: 14px; }
+.meet-title { display: block; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -.01em; margin: 4px 0 6px; }
+.meet-sub { display: block; color: var(--muted); }

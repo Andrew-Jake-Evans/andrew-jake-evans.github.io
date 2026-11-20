@@ -1,0 +1,44 @@
+/* Meet Andrew page */
+.about-hero { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: center; padding: 72px 20px 48px; }
+.portrait { width: 260px; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.about-hero h1 { font-size: clamp(30px, 4.5vw, 44px); }
+.about-hero p { max-width: 62ch; }
+.facts-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 20px 0 0; }
+.facts-chips li { font-size: 14px; padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); }
+
+.timeline { list-style: none; margin: 8px 0 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 96px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+.timeline li { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 14px 0; position: relative; }
+.timeline li::after { content: ""; position: absolute; left: 90px; top: 22px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); }
+.timeline .when { font-weight: 700; color: var(--accent); font-size: 14px; text-align: right; padding-top: 2px; }
+.timeline h3 { margin: 0 0 2px; font-size: 17px; }
+.timeline p { margin: 0; color: var(--muted); }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.gallery figure { margin: 0; }
+.gallery button { display: block; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden; cursor: zoom-in; background: var(--surface); }
+.gallery img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .2s; }
+.gallery button:hover img { transform: scale(1.03); }
+.gallery figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.gallery figure.todo { aspect-ratio: 1; display: grid; place-items: center; border-radius: 12px; }
+
+dialog#lightbox { border: 0; padding: 0; background: transparent; max-width: min(92vw, 1000px); }
+dialog#lightbox::backdrop { background: rgba(0, 0, 0, .8); }
+#lbImg { display: block; max-width: 100%; max-height: 80vh; border-radius: 12px; margin: 0 auto; }
+#lbCap { color: #fff; text-align: center; margin: 10px 0 0; }
+.lb-close { position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(0, 0, 0, .6); color: #fff; font-size: 22px; cursor: pointer; }
+
+/* Placeholders: visible on purpose so nothing ships half-filled. */
+.todo { border: 2px dashed var(--accent) !important; background: var(--accent-soft) !important; color: var(--accent); font-size: 14px; font-weight: 500; }
+.todo-text { color: var(--accent) !important; background: var(--accent-soft); border-radius: 6px; }
+.timeline li.todo { border-radius: 12px; padding-left: 8px; padding-right: 8px; }
+
+@media (max-width: 720px) {
+  .about-hero { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; }
+  .portrait { width: 200px; }
+  .timeline::before { left: 8px; }
+  .timeline li { grid-template-columns: 1fr; gap: 2px; padding-left: 32px; }
+  .timeline li::after { left: 2px; }
+  .timeline .when { text-align: left; }
+}
