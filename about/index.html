@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Meet Andrew · Andrew Evans</title>
-  <meta name="description" content="Andrew Evans outside of work: a personal bio, life milestones and photos.">
+  <meta name="description" content="Andrew Evans outside of work: a personal bio and life milestones.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,18 +18,15 @@
       <ul>
         <li><a href="#bio">Bio</a></li>
         <li><a href="#milestones">Milestones</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+        <li id="navGallery"><a href="#gallery">Gallery</a></li>
         <li><a href="../">← Portfolio</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="bio" class="wrap about-hero">
-      <div class="portrait todo" aria-label="Portrait photo">
-        <!-- Replace with: <img src="../images/about/portrait.jpg" alt="Andrew smiling outdoors"> -->
-        <span>Add a portrait photo</span>
-      </div>
+    <section id="bio" class="wrap about-hero no-portrait">
+      <!-- Portrait: add <div class="portrait"><img src="../images/about/portrait.jpg" alt="Andrew"></div> here and remove the no-portrait class above. -->
       <div>
         <p class="eyebrow">Meet Andrew</p>
         <h1>Hi, I'm Andrew.</h1>
@@ -121,9 +118,9 @@
     ];
     const grid = document.getElementById("galleryGrid");
     const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    grid.innerHTML = PHOTOS.length
-      ? PHOTOS.map((p, i) => `<figure><button data-i="${i}"><img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy"></button><figcaption>${esc(p.caption)}</figcaption></figure>`).join("")
-      : Array.from({ length: 6 }, () => `<figure class="todo"><span>Add a photo</span></figure>`).join("");
+    // No photos yet: hide the gallery and its menu link instead of showing empty spots.
+    if (!PHOTOS.length) { document.getElementById("gallery").hidden = true; document.getElementById("navGallery").hidden = true; }
+    grid.innerHTML = PHOTOS.map((p, i) => `<figure><button data-i="${i}"><img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy"></button><figcaption>${esc(p.caption)}</figcaption></figure>`).join("");
     const lb = document.getElementById("lightbox");
     grid.addEventListener("click", (e) => {
       const b = e.target.closest("button[data-i]");
