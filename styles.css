@@ -90,7 +90,7 @@ h2 { font-size: 26px; letter-spacing: -.01em; margin: 0 0 20px; }
 .steps .card h3 { margin-bottom: 10px; }
 
 .worklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 32px; }
-.worklist li { padding: 16px 0 16px 16px; border-left: 2px solid var(--border); margin-bottom: 8px; }
+.worklist li { padding: 10px 0 10px 16px; border-left: 2px solid var(--border); margin-bottom: 8px; }
 .worklist li:hover { border-left-color: var(--accent); }
-.worklist h3 { margin: 0 0 4px; font-size: 16px; }
+.worklist h3 { margin: 0; font-size: 16px; font-weight: 500; }
 .worklist p { margin: 0; color: var(--muted); font-size: 15px; }
