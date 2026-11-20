@@ -42,3 +42,10 @@ dialog#lightbox::backdrop { background: rgba(0, 0, 0, .8); }
   .timeline li::after { left: 2px; }
   .timeline .when { text-align: left; }
 }
+
+.teams { display: flex; align-items: center; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+.teams-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+.teams img { width: 48px; height: 48px; object-fit: contain; }
+.timeline .emoji { margin-right: 4px; }
+.timeline li.upcoming::after { background: var(--bg); border: 3px dashed var(--accent); }
+.timeline li.upcoming h3 { color: var(--accent); }
